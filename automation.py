@@ -34,11 +34,11 @@ with open('NewG.csv', 'w', newline='') as f:
             html_grade=soup.find_all(attrs= {"id":"ContentPlaceHolder1_pnlGrading"})
             html_grade_list=BeautifulSoup(str(BeautifulSoup(str(html_grade),'lxml').find('tbody')),'lxml').find_all('tr')
             grade_list=[None]*11
+            
             for i in range(9,9+11):
                 final=BeautifulSoup(str(html_grade_list[i]),'lxml').find_all('td')
                 grade_list[i-9]=BeautifulSoup(str(final[3]),'lxml').text
-                print(final[3])
-                print(grade_list[i-9])
+            
             print(grade_list)
             result=soup.find(id="ContentPlaceHolder1_lblResultNewGrading").text
             SGPA=soup.find(id="ContentPlaceHolder1_lblSGPA").text
